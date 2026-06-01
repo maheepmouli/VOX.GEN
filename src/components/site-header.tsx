@@ -3,13 +3,13 @@ import { Link } from "@tanstack/react-router";
 export function SiteHeader() {
   return (
     <header className="border-b border-border bg-surface">
-      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-        <div className="flex items-center gap-8">
-          <Link to="/" className="flex items-center gap-2">
+      <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-8">
+          <Link to="/" className="flex items-center gap-2 shrink-0">
             <div className="size-5 bg-brand rounded-sm" />
             <span className="font-mono text-sm font-semibold tracking-tight">VOX.GEN</span>
           </Link>
-          <nav className="hidden md:flex items-center gap-6">
+          <nav className="flex flex-wrap items-center gap-x-5 gap-y-2">
             <Link
               to="/configurator"
               className="text-sm text-muted-foreground hover:text-foreground transition-colors"
@@ -33,8 +33,11 @@ export function SiteHeader() {
             </Link>
           </nav>
         </div>
-        <div className="flex items-center gap-3">
-          <button className="text-sm font-medium py-2 px-4 text-muted-foreground hover:text-foreground transition-colors">
+        <div className="flex flex-wrap items-center gap-3">
+          <button
+            type="button"
+            className="hidden sm:inline text-sm font-medium py-2 px-4 text-muted-foreground hover:text-foreground transition-colors"
+          >
             Sign in
           </button>
           <Link

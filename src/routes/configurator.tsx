@@ -1,6 +1,7 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { ClientOnly, createFileRoute } from "@tanstack/react-router";
 import { useEffect, useMemo, useState, type ReactNode } from "react";
 import { SiteHeader } from "@/components/site-header";
+import { SiteFooter } from "@/components/site-footer";
 import { VoxelViewport } from "@/components/voxel-viewport";
 import {
   type AdjacencyRule,
@@ -247,7 +248,15 @@ function ConfiguratorPage() {
 
           <section className="col-span-12 lg:col-span-6 flex flex-col gap-3 min-h-[420px]">
             <div className="flex-1 bg-zinc-50 ring-1 ring-black/5 rounded-lg relative overflow-hidden min-h-[360px]">
-              <VoxelViewport voxels={voxels} config={config} />
+              <ClientOnly
+                fallback={
+                  <div className="absolute inset-0 flex items-center justify-center bg-zinc-100 text-xs font-mono text-muted-foreground">
+                    Loading 3D preview…
+                  </div>
+                }
+              >
+                <VoxelViewport voxels={voxels} config={config} />
+              </ClientOnly>
               <div className="absolute bottom-3 left-3 flex gap-2 pointer-events-none">
                 <div className="bg-surface/90 backdrop-blur ring-1 ring-black/10 px-3 py-1.5 rounded flex gap-4 text-[10px] font-mono">
                   <span>VOXELS: {stats.total}</span>
@@ -326,6 +335,7 @@ function ConfiguratorPage() {
           </aside>
         </div>
       </main>
+      <SiteFooter />
     </div>
   );
 }
