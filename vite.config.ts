@@ -15,5 +15,10 @@ export default defineConfig({
   // a dist-only build leaves Vercel with no serverless handler → platform 404 NOT_FOUND.
   nitro: {
     preset: "vercel",
+    output: {
+      dir: ".vercel/output",
+      serverDir: ".vercel/output/functions/__server.func",
+      publicDir: ".vercel/output/static",
+    },
   },
 });
