@@ -1,4 +1,5 @@
 {
+  "name": "vox-gen",
   "buildCommand": "bun run build",
   "installCommand": "bun install",
   "framework": null
