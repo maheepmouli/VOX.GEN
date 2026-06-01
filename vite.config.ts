@@ -11,8 +11,9 @@ export default defineConfig({
     // Redirect TanStack Start's bundled server entry to server.ts (SSR error wrapper).
     server: { entry: "server" },
   },
-  // Self-hosted / Vercel: enable Nitro (Lovable sandbox enables this automatically).
+  // Vercel Build Output API (.vercel/output). Do not use cloudflare-module here —
+  // a dist-only build leaves Vercel with no serverless handler → platform 404 NOT_FOUND.
   nitro: {
-    preset: process.env.VERCEL ? "vercel" : "cloudflare-module",
+    preset: "vercel",
   },
 });
